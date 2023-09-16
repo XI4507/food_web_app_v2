@@ -613,13 +613,13 @@ const Header = () => {
 };
 
 const RestaurantCard = ({restaurant}) => {
-  const {name,cuisines}=restaurant.info;
+  const {name,cuisines,cloudinaryImageId,avgRating}=restaurant.info;
   return (
     <div className="restaurant-card">
-      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/56c9ab92bd79745fd152a30fa2525426" alt="res-card" />
+      <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} alt="res-card" />
       <h3>{name}</h3>
-      <p>{cuisines.join(",")}</p>
-      <p>2.3 km</p>
+      <p>{cuisines.join(", ")}</p>
+      <p>{avgRating} ⭐</p>
     </div>
   );
 };
@@ -629,7 +629,9 @@ const Body = () => {
     <div>
       <div className="search-bar">seacrh</div>
       <div className="restaurant-container">
-        <RestaurantCard restaurant={restaurants[0]} />
+        {
+            restaurants.map((res)=><RestaurantCard restaurant={res} key={res.info.id}/>)
+        }
       </div>
     </div>
   );
