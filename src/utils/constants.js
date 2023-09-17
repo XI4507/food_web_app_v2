@@ -1,7 +1,6 @@
-import ReactDOM from "react-dom/client";
-import "./index.css";
-
-const restaurants=[
+export const Logo_Url="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO0NdGIgrMeANsmYv-4hX66EpZfVo87Tjb5g&usqp=CAU"
+export const CDN_URL="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
+export const restaurants=[
     {
       "info": {
         "id": "326440",
@@ -590,60 +589,3 @@ const restaurants=[
       }
     }
 ]
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO0NdGIgrMeANsmYv-4hX66EpZfVo87Tjb5g&usqp=CAU"
-          alt="logo"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = ({restaurant}) => {
-  const {name,cuisines,cloudinaryImageId,avgRating}=restaurant.info;
-  return (
-    <div className="restaurant-card">
-      <img src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId} alt="res-card" />
-      <h3>{name}</h3>
-      <p>{cuisines.join(", ")}</p>
-      <p>{avgRating} ⭐</p>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div>
-      <div className="search-bar">seacrh</div>
-      <div className="restaurant-container">
-        {
-            restaurants.map((res)=><RestaurantCard restaurant={res} key={res.info.id}/>)
-        }
-      </div>
-    </div>
-  );
-};
-const AppLayout = () => {
-  return (
-    <div>
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
