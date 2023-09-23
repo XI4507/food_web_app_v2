@@ -1,11 +1,11 @@
 import RestaurantCard from "./RestaurantCard";
-import { restaurants } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { SWIGGY_API } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-    const [allRestaurant,setAllRestaurant]=useState(restaurants);
-    const [restaurant,setRestaurant]=useState(restaurants)
+    const [allRestaurant,setAllRestaurant]=useState([]);
+    const [restaurant,setRestaurant]=useState([]);
     useEffect(()=>{
        fetchData()
     },[])
@@ -29,6 +29,9 @@ const Body = () => {
     function handleTopRated(){
         const filterRestaurant=allRestaurant.filter((res)=>res.info.avgRating>4.1);
         setRestaurant(filterRestaurant)
+    }
+    if(restaurant.length===0){
+      return <Shimmer/>
     }
     return (
       <div>
