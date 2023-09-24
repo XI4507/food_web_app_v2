@@ -54,3 +54,15 @@
     flex-wrap: wrap;
     justify-content: space-between;
 }
+.login-button{
+    background-color: blue;
+    width: 70px;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.search-box{
+    padding: 3px;
+}

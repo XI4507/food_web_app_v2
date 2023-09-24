@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [allRestaurant,setAllRestaurant]=useState([]);
+    const [searchText,setSearchText]=useState("")
     const [restaurant,setRestaurant]=useState([]);
     useEffect(()=>{
        fetchData()
@@ -19,11 +20,15 @@ const Body = () => {
           if (cardObj.card.card && cardObj.card.card.id === restaurant_list) {
             const resData =
             cardObj.card?.card?.gridElements?.infoWithStyle?.restaurants;
-            console.log(resData);
             setAllRestaurant(resData);
             setRestaurant(resData)
+            console.log(allRestaurant);
           }
         }
+    }
+    function searchHandler(searchText){
+      const data=allRestaurant.filter((restaurant)=>restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()));
+      setRestaurant(data)
     }
     
     function handleTopRated(){
@@ -36,6 +41,8 @@ const Body = () => {
     return (
       <div>
         <div className="filter-buttons">
+            <input type="text" className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
+            <button className="btn" onClick={()=>searchHandler(searchText)}>Search</button>
             <button className="btn" onClick={()=>handleTopRated()}>Top Rated</button>
             <button className="btn" onClick={()=>setRestaurant(allRestaurant)}>All Restaurant</button>
         </div>
