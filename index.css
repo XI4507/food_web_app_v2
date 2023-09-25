@@ -66,3 +66,7 @@
 .search-box{
     padding: 3px;
 }
+.link{
+    text-decoration: none;
+    color: navy;
+}

@@ -28,6 +28,9 @@ const Body = () => {
     }
     function searchHandler(searchText){
       const data=allRestaurant.filter((restaurant)=>restaurant.info.name.toLowerCase().includes(searchText.toLowerCase()));
+      if(data.length==0){
+        return <h1>No Restaurant Found ...</h1>
+      }
       setRestaurant(data)
     }
     
