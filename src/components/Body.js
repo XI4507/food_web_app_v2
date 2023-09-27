@@ -3,11 +3,14 @@ import { useEffect, useState } from "react";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
     const [allRestaurant,setAllRestaurant]=useState([]);
-    const [searchText,setSearchText]=useState("")
+    const [searchText,setSearchText]=useState("");
     const [restaurant,setRestaurant]=useState([]);
+    const onlineStatus=useOnlineStatus();
+  
     useEffect(()=>{
        fetchData()
     },[])
@@ -42,7 +45,7 @@ const Body = () => {
     if(restaurant.length===0){
       return <Shimmer/>
     }
-    return (
+    return onlineStatus? (
       <div>
         <div className="filter-buttons">
             <input type="text" className="search-box" value={searchText} onChange={(e)=>setSearchText(e.target.value)}/>
@@ -56,7 +59,7 @@ const Body = () => {
           }
         </div>
       </div>
-    );
+    ):<h1>It Seems Your Internet is Not Working...</h1>
   };
 
   export default Body;
