@@ -1,13 +1,21 @@
-const About = () => {
-  return (
-    <div>
-      <h1>About</h1>
-      <hr />
-      <p>
-        I am a highly motivated ReactJs fresher who is looking for an
-        opportunity to grow and develop my skills.
-      </p>
-    </div>
-  );
-};
+// import User from "./User"
+import React from "react";
+import UserClass from "./UserClass";
+
+class About extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  render(){
+    return (
+      <div>
+        <h1>About</h1>
+        <hr/>
+        {/* <User name="Rakesh Singh" mail="rakesh@gmail.com"/> */}
+        <UserClass />
+      </div>
+    );
+  }
+}
+
 export default About;
